@@ -1,4 +1,4 @@
-# --- Função para analisar notas ---
+#funcao para analisar notas 
 def analisar_notas(lista):
     """
     Recebe uma lista de notas (podendo conter valores inválidos)
@@ -9,7 +9,7 @@ def analisar_notas(lista):
     maior = None
     menor = None
 
-    # percorre cada item da lista recebida
+    #percorre cada item da lista recebida
     for nota in lista:
         try:
             valor = float(nota)  # tenta converter para número
@@ -29,10 +29,10 @@ def analisar_notas(lista):
         if menor is None or valor < menor:
             menor = valor
 
-    # calcula média — evita divisão por zero
+    # calcula media — evita divisão por zero
     media = total / count if count > 0 else 0
 
-    # devolve tudo organizado num dicionário
+    # devolve tudo organizado num dicionario
     return {
         "notas_validas": count,
         "media": media,
@@ -41,12 +41,12 @@ def analisar_notas(lista):
     }
 
 
-# --- Função para salvar o resultado num arquivo ---
+#funcao para salvar o resultado num arquivo 
 def salvar_relatorio(resultado):
     """
     Recebe o dicionário com os resultados e grava num arquivo de texto.
     """
-    # abre (ou cria) um arquivo chamado 'relatorio_notas.txt' no modo de escrita
+    #abre (ou cria) um arquivo chamado 'relatorio_notas.txt' no modo de escrita
     with open("relatorio_notas.txt", "w", encoding="utf-8") as arquivo:
         arquivo.write("✅ Análise concluída:\n")
         arquivo.write(f"- Notas válidas: {resultado['notas_validas']}\n")
@@ -57,8 +57,8 @@ def salvar_relatorio(resultado):
     print("\n📁 Relatório salvo com sucesso em 'relatorio_notas.txt'!")
 
 
-# --- Programa principal ---
-notas = []  # lista vazia para armazenar as notas digitadas
+#programa principal 
+notas = []  #lista vazia para armazenar as notas digitadas
 
 while True:
     entrada = input("Digite uma nota (ou 'sair' para encerrar): ")
@@ -66,15 +66,16 @@ while True:
         break
     notas.append(entrada)
 
-# processa as notas digitadas
+#processa as notas digitadas
 resultado = analisar_notas(notas)
 
-# mostra o resultado no terminal
+#mostra o resultado no terminal
 print("\n✅ Análise concluída:")
 print(f"- Notas válidas: {resultado['notas_validas']}")
 print(f"- Média: {resultado['media']:.2f}")
 print(f"- Maior nota: {resultado['maior_nota']:.2f}")
 print(f"- Menor nota: {resultado['menor_nota']:.2f}")
 
-# salva o resultado em arquivo
+#salva o resultado em arquivo
 salvar_relatorio(resultado)
+
